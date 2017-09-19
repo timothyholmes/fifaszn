@@ -1,6 +1,7 @@
 module.exports = {
   expectedSuccess: {
     1: {
+      id: '54321',
       day: 0,
       points: 0,
       team: 'Man U',
@@ -20,9 +21,10 @@ module.exports = {
           away: '4'
         }
       ],
-      results: []
+      history: []
     },
     2: {
+      id: '54321',
       day: 0,
       points: 0,
       team: 'Chelsea',
@@ -42,9 +44,10 @@ module.exports = {
           away: '4'
         }
       ],
-      results: []
+      history: []
     },
     3: {
+      id: '54321',
       day: 0,
       points: 0,
       team: 'HotSpurs',
@@ -64,9 +67,10 @@ module.exports = {
           away: '4'
         }
       ],
-      results: []
+      history: []
     },
     4: {
+      id: '54321',
       day: 0,
       points: 0,
       team: 'Arsenal',
@@ -86,7 +90,7 @@ module.exports = {
           away: '3'
         }
       ],
-      results: []
+      history: []
     },
     name: 'Unit Testing',
     insertDate: '12345',
