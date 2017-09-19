@@ -23,7 +23,10 @@ describe('Generate Schedule Route', () => {
           utilities: {
             libraries: {
               mongo: {
-                insert: insertStub
+                db: 'mongodb',
+                methods: {
+                  insert: insertStub
+                }
               },
             },
           },
@@ -65,6 +68,7 @@ describe('Generate Schedule Route', () => {
       .then(() => {
         should(insertStub.firstCall.args[0]).deepEqual(expected);
         should(insertStub.firstCall.args[1]).equal('seasons');
+        should(insertStub.firstCall.args[2]).equal('mongodb');
         should(replyStub.firstCall.args[0].message).equal('New schedules created');
         should(replyStub.firstCall.args[0].result).deepEqual(expected);
         should(codeStub.firstCall.args[0]).equal(200);
@@ -82,7 +86,10 @@ describe('Generate Schedule Route', () => {
           utilities: {
             libraries: {
               mongo: {
-                insert: insertStub
+                db: 'mongodb',
+                methods: {
+                  insert: insertStub
+                }
               },
             },
           },
