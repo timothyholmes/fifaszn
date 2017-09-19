@@ -19,13 +19,14 @@ describe('Utilities Test', () => {
         expose: sinon.stub()
       };
 
-      server.register(serverStub, {}, nextStub);
+      server.register(serverStub, {}, nextStub)
+        .then(() => {
+          should(nextStub.callCount).equal(1);
+          should(serverStub.expose.firstCall.args[0]).deepEqual('helpers');
+          should(serverStub.expose.firstCall.args[1]).deepEqual(server.methods);
 
-      should(nextStub.callCount).equal(1);
-      should(serverStub.expose.firstCall.args[0]).deepEqual('helpers');
-      should(serverStub.expose.firstCall.args[1]).deepEqual(server.methods);
-
-      done();
+          done();
+        });
     });
   });
   describe('wireRoute method', () => {
