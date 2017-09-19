@@ -89,6 +89,7 @@ module.exports = {
       results: []
     },
     name: 'Unit Testing',
-    insertDate: '12345'
+    insertDate: '12345',
+    seasonId: '54321'
   }
 };
