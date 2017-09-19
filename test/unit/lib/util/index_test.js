@@ -22,7 +22,7 @@ describe('Utilities Test', () => {
       server.register(serverStub, {}, nextStub);
 
       should(nextStub.callCount).equal(1);
-      should(serverStub.expose.firstCall.args[0]).deepEqual('methods');
+      should(serverStub.expose.firstCall.args[0]).deepEqual('helpers');
       should(serverStub.expose.firstCall.args[1]).deepEqual(server.methods);
 
       done();

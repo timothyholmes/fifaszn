@@ -1,9 +1,10 @@
 
 const Lab = require('lab');
 const should = require('should');
+const bluebird = require('bluebird');
 const sinon = require('sinon');
 const generateSchedule = require('../../../../../../lib/api/schedule/handlers/generateSchedule');
-const mocks = require('../../../../../mocks/generateScheduleMocks.js');
+const mocks = require('../../../../../mocks/generateScheduleMocks');
 
 exports.lab = Lab.script();
 const lab = exports.lab;
@@ -14,8 +15,20 @@ const it = lab.it;
 describe('Generate Schedule Route', () => {
   it('should generate a schedule and initialize data', (done) => {
     const codeStub = sinon.stub();
+    const insertStub = sinon.stub().returns(bluebird.resolve());
     const replyStub = sinon.stub().returns({ code: codeStub });
     const requestStub = {
+      server: {
+        plugins: {
+          utilities: {
+            libraries: {
+              mongo: {
+                insert: insertStub
+              },
+            },
+          },
+        },
+      },
       payload: {
         seasonName: 'Unit Testing',
         players: [
@@ -48,18 +61,33 @@ describe('Generate Schedule Route', () => {
     };
     const expected = mocks.expectedSuccess;
 
-    generateSchedule.handler(requestStub, replyStub);
+    generateSchedule.handler(requestStub, replyStub)
+      .then(() => {
+        should(insertStub.firstCall.args[0]).deepEqual(expected);
+        should(insertStub.firstCall.args[1]).equal('seasons');
+        should(replyStub.firstCall.args[0].message).equal('New schedules created');
+        should(replyStub.firstCall.args[0].result).deepEqual(expected);
+        should(codeStub.firstCall.args[0]).equal(200);
 
-    should(replyStub.firstCall.args[0].message).equal('New schedules created');
-    should(replyStub.firstCall.args[0].result).deepEqual(expected);
-    should(codeStub.firstCall.args[0]).deepEqual(200);
-
-    done();
+        done();
+      });
   });
   it('should return error when players are incorrect size', (done) => {
     const codeStub = sinon.stub();
+    const insertStub = sinon.stub().returns(bluebird.resolve());
     const replyStub = sinon.stub().returns({ code: codeStub });
     const requestStub = {
+      server: {
+        plugins: {
+          utilities: {
+            libraries: {
+              mongo: {
+                insert: insertStub
+              },
+            },
+          },
+        },
+      },
       payload: {
         seasonName: 'Unit Testing',
         players: [
@@ -77,6 +105,7 @@ describe('Generate Schedule Route', () => {
 
     should(replyStub.firstCall.args[0].message).equal('Must be a multiple of 4 players in a season');
     should(codeStub.firstCall.args[0]).deepEqual(400);
+    should(insertStub.callCount).equal(0);
 
     done();
   });
