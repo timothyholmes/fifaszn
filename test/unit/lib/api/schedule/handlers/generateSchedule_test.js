@@ -28,6 +28,9 @@ describe('Generate Schedule Route', () => {
                   insert: insertStub
                 }
               },
+              date: {
+                now: () => '12345'
+              }
             },
           },
         },
@@ -91,6 +94,9 @@ describe('Generate Schedule Route', () => {
                   insert: insertStub
                 }
               },
+              date: {
+                now: () => '12345'
+              }
             },
           },
         },
