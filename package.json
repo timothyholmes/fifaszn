@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "MONGO_URL=\"mongodb://localhost:27017/\" node .",
     "test": "lab -t 90 -e development -L -v -m 5000 ./test",
     "html": "lab -L -c -r html -e development -o coverage.html -m 5000 ./test && open coverage.html",
     "docs": "rm -rf ./docs && jsdoc -c ./config/jsdoc.js && open ./docs/index.html"
