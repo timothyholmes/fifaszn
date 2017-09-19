@@ -31,7 +31,8 @@ describe('Season service', () => {
                 },
                 date: {
                   now: () => '12345'
-                }
+                },
+                uuidv4: () => '54321'
               },
             },
           },
@@ -97,7 +98,8 @@ describe('Season service', () => {
                 },
                 date: {
                   now: () => '12345'
-                }
+                },
+                uuidv4: () => '54321'
               },
             },
           },
