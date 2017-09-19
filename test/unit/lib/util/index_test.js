@@ -11,7 +11,7 @@ const lab = exports.lab;
 const describe = lab.describe;
 const it = lab.it;
 
-describe('Utilities Test', () => {
+describe('Utilities', () => {
   describe('Register method', () => {
     it('Should call wireRoutes with path and server', (done) => {
       const nextStub = sinon.stub();
@@ -29,21 +29,23 @@ describe('Utilities Test', () => {
         });
     });
   });
-  describe('wireRoute method', () => {
-    it('Should call route with requires in specified directory', (done) => {
-      const pathToMockData = path.resolve('test/mocks/mockDir');
-      const serverStub = {
-        route: sinon.stub()
-      };
+  describe('helpers', () => {
+    describe('wireRoute method', () => {
+      it('Should call route with requires in specified directory', (done) => {
+        const pathToMockData = path.resolve('test/mocks/mockDir');
+        const serverStub = {
+          route: sinon.stub()
+        };
 
-      server.methods.wireRoute(pathToMockData, serverStub);
+        server.methods.wireRoute(pathToMockData, serverStub);
 
-      should(serverStub.route.getCall(0).args[0].futureHendrix).equal(true);
-      should(serverStub.route.getCall(0).args[0].superFuture).equal(true);
-      should(serverStub.route.getCall(0).args[0].astronaut).equal(true);
-      should(serverStub.route.getCall(0).args[0].pluto).equal(true);
+        should(serverStub.route.getCall(0).args[0].futureHendrix).equal(true);
+        should(serverStub.route.getCall(0).args[0].superFuture).equal(true);
+        should(serverStub.route.getCall(0).args[0].astronaut).equal(true);
+        should(serverStub.route.getCall(0).args[0].pluto).equal(true);
 
-      done();
+        done();
+      });
     });
   });
 });
