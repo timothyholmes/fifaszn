@@ -5,7 +5,7 @@ const bluebird = require('bluebird');
 const _ = require('lodash');
 const sinon = require('sinon');
 const newSeason = require('../../../../../../lib/api/season/handlers/new');
-const mocks = require('../../../../../mocks/newSeasonMocks');
+const mocks = require('../../../../../mocks/newSeasonMocks').expectedSuccess;
 
 exports.lab = Lab.script();
 const lab = exports.lab;
@@ -48,13 +48,13 @@ describe('Season service', () => {
           players: [
             {
               team: 'Man U',
-              name: 'Tim',
+              name: 'Andrew',
               color: 'ff0000',
               cpu: true
             },
             {
               team: 'Chelsea',
-              name: 'Tim',
+              name: 'Matt',
               color: '00ff00',
               cpu: true
             },
@@ -66,22 +66,21 @@ describe('Season service', () => {
             },
             {
               team: 'Arsenal',
-              name: 'Tim',
+              name: 'Tony',
               color: 'ffff00',
               cpu: false
             }
           ]
         }
       };
-      const expected = mocks.expectedSuccess;
 
       newSeason.handler(requestStub, replyStub)
         .then(() => {
-          should(insertStub.firstCall.args[0]).deepEqual(expected);
+          should(insertStub.firstCall.args[0]).deepEqual(mocks);
           should(insertStub.firstCall.args[1]).equal('seasons');
           should(insertStub.firstCall.args[2]).equal('mongodb');
           should(replyStub.firstCall.args[0].message).equal('New season created');
-          should(replyStub.firstCall.args[0].result).deepEqual(expected);
+          should(replyStub.firstCall.args[0].result).deepEqual(mocks);
           should(codeStub.firstCall.args[0]).equal(200);
 
           done();
