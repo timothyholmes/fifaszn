@@ -2,7 +2,7 @@ module.exports = {
   expectedSuccess: {
     players: [{
       id: '2',
-      day: 0,
+      day: 1,
       points: 0,
       team: 'Man U',
       name: 'Andrew',
@@ -13,7 +13,18 @@ module.exports = {
         { home: '2', away: '4' },
         { home: '2', away: '5' }
       ],
-      history: []
+      history: [
+        {
+          home: {
+            id: '4',
+            points: 3
+          },
+          away: {
+            id: '2',
+            points: 0
+          }
+        }
+      ]
     }, {
       id: '3',
       day: 0,
@@ -30,8 +41,8 @@ module.exports = {
       history: []
     }, {
       id: '4',
-      day: 0,
-      points: 0,
+      day: 1,
+      points: 3,
       team: 'HotSpurs',
       name: 'Tim',
       color: '0000ff',
@@ -41,7 +52,18 @@ module.exports = {
         { home: '4', away: '3' },
         { home: '4', away: '5' }
       ],
-      history: []
+      history: [
+        {
+          home: {
+            id: '4',
+            points: 3
+          },
+          away: {
+            id: '2',
+            points: 0
+          }
+        }
+      ]
     }, {
       id: '5',
       day: 0,
