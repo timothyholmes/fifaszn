@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Example from './components/example.jsx';
+import FifaSzn from './components/fifaSzn.jsx';
 
 render(
-  <Example />,
+  <FifaSzn />,
   document.getElementById('app')
 );

@@ -1,9 +1,11 @@
 .app-wrap {
-    width: 560px;
-    margin-left: 25%;
+  width: 560px;
+  margin-left: 25%;
 }
 
 .header {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+  background-color: $accent-color;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
 }
