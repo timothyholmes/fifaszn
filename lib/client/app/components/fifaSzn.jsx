@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import {render} from 'react-dom';
 import '../../public/main.css';
+import env from '../../../../config/env.js';
 import Header from './header.jsx';
 import FullScreenCard from './fullScreenCard.jsx';
 
@@ -16,7 +17,7 @@ class FifaSzn extends React.Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:3000/v1/season/list/')
+    axios.get(`${env.API_HOST}/v1/season/list/`)
       .then(res => {
         this.setState({
           seasons: res.data.resp
