@@ -1,0 +1,14 @@
+.fullScreenCard {
+  background-color: $white;
+  color: $accent-color;
+
+  border: 2.5px solid $accent-color;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 50px;
+
+  &:hover {
+    background-color: $accent-color;
+    color: $white;
+  }
+}

@@ -3,19 +3,20 @@ import React from 'react';
 import {render} from 'react-dom';
 import '../../public/main.css';
 
-class Header extends React.Component {
+class FullScreenCard extends React.Component {
   constructor(props) {
     super(props);
   }
   render () {
     return (
-      <header className="header">
-        <div className="title">
+      <section className="fullScreenCard">
+        <h1>
           { this.props.name }
-        </div>
-      </header>
+        </h1>
+        <div> {this.props.id} </div>
+      </section>
     );
   }
 }
 
-export default Header;
+export default FullScreenCard;

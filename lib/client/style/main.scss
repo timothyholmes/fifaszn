@@ -1,4 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700);
 
+// main settings
 @import "variables";
 @import "app";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+// components
+@import "fullScreenCard";
