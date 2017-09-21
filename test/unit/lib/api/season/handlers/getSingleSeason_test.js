@@ -4,7 +4,7 @@ const should = require('should');
 const _ = require('lodash');
 const bluebird = require('bluebird');
 const sinon = require('sinon');
-const getSeason = require('../../../../../../lib/api/season/handlers/get');
+const getSingleSeason = require('../../../../../../lib/api/season/handlers/getSingleSeason');
 
 exports.lab = Lab.script();
 const lab = exports.lab;
@@ -31,7 +31,7 @@ describe('Season service', () => {
                 mongo: {
                   db: 'mongodb',
                   methods: {
-                    findOne: fineOneStub
+                    find: fineOneStub
                   }
                 },
                 _
@@ -41,53 +41,13 @@ describe('Season service', () => {
         }
       };
 
-      getSeason.handler(requestStub, replyStub)
+      getSingleSeason.handler(requestStub, replyStub)
         .then(() => {
           should(fineOneStub.firstCall.args[0]).deepEqual({
+            limit: 1,
             query: {
               seasonId: '12345'
             },
-            sort: {
-              insertDate: -1
-            }
-          });
-          should(fineOneStub.firstCall.args[1]).equal('seasons');
-          should(fineOneStub.firstCall.args[2]).equal('mongodb');
-          should(replyStub.firstCall.args[0].sample).equal('results');
-          should(codeStub.firstCall.args[0]).equal(200);
-
-          done();
-        });
-    });
-    it('should return latest season without id', (done) => {
-      const codeStub = sinon.stub();
-      const fineOneStub = sinon.stub().returns(bluebird.resolve({
-        sample: 'results'
-      }));
-      const replyStub = sinon.stub().returns({ code: codeStub });
-      const requestStub = {
-        query: {},
-        server: {
-          plugins: {
-            utilities: {
-              libraries: {
-                mongo: {
-                  db: 'mongodb',
-                  methods: {
-                    findOne: fineOneStub
-                  }
-                },
-                _
-              },
-            },
-          },
-        }
-      };
-
-      getSeason.handler(requestStub, replyStub)
-        .then(() => {
-          should(fineOneStub.firstCall.args[0]).deepEqual({
-            query: {},
             sort: {
               insertDate: -1
             }

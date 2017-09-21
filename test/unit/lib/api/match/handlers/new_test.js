@@ -18,7 +18,7 @@ describe('Match service', () => {
   describe('New Match Route', () => {
     it('should', (done) => {
       const codeStub = sinon.stub();
-      const findOneStub = sinon.stub().returns(
+      const findStub = sinon.stub().returns(
         bluebird.resolve({
           result: [
             newSeasonMocks
@@ -36,7 +36,7 @@ describe('Match service', () => {
                   db: 'mongodb',
                   methods: {
                     insert: insertStub,
-                    findOne: findOneStub
+                    find: findStub
                   }
                 },
                 _,
@@ -66,7 +66,7 @@ describe('Match service', () => {
 
       newMatch.handler(requestStub, replyStub)
         .then(() => {
-          should(findOneStub.firstCall.args[0]).deepEqual({
+          should(findStub.firstCall.args[0]).deepEqual({
             query: {
               seasonId: '12345'
             },
@@ -74,8 +74,8 @@ describe('Match service', () => {
               insertDate: -1
             }
           });
-          should(findOneStub.firstCall.args[1]).equal('seasons');
-          should(findOneStub.firstCall.args[2]).equal('mongodb');
+          should(findStub.firstCall.args[1]).equal('seasons');
+          should(findStub.firstCall.args[2]).equal('mongodb');
           should(insertStub.firstCall.args[0]).deepEqual(newMatchMocks);
           should(insertStub.firstCall.args[1]).equal('seasons');
           should(insertStub.firstCall.args[2]).equal('mongodb');
