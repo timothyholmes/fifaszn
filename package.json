@@ -6,7 +6,7 @@
   "scripts": {
     "start": "MONGO_URL=\"mongodb://localhost:27017/\" node .",
     "ui-build": "npm run ui-build-sass && webpack -p",
-    "ui-watch": "concurrently \"webpack -d --watch\" \"npm run ui-watch-sass\" \"npm run start\"",
+    "ui-watch": "PORT=3000 concurrently \"webpack -dw\" \"npm run ui-watch-sass\" \"npm run start\"",
     "ui-watch-sass": "nodemon -e scss -w lib/client/style/ -x 'npm run ui-build-sass'",
     "ui-build-sass": "node-sass --output-style nested lib/client/style/main.scss lib/client/public/main.css",
     "test": "lab -t 90 -e development -L -v -m 5000 ./test",

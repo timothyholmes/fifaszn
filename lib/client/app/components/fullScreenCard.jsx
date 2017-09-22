@@ -9,11 +9,14 @@ class FullScreenCard extends React.Component {
   }
   render () {
     return (
-      <section className="fullScreenCard">
+      <section className="full-screen-card"
+          onClick={ () => this.props.onClick() }>
         <h1>
-          { this.props.name }
+          { this.props.header }
         </h1>
-        <div> {this.props.id} </div>
+        <div>
+          {this.props.subtext}
+        </div>
       </section>
     );
   }

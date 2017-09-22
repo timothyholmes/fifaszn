@@ -6,15 +6,22 @@ import '../../public/main.css';
 import env from '../../../../config/env.js';
 import Header from './header.jsx';
 import FullScreenCard from './fullScreenCard.jsx';
+import NewSzn from './newSzn.jsx';
 
 class FifaSzn extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      name: 'fifaszn',
+      name: 'FIFASZN',
+      active: 'LANDING',
       seasons: []
     }
+  }
+  updateView(view) {
+    this.setState({
+      active: view
+    });
   }
   componentDidMount() {
     axios.get(`${env.API_HOST}/v1/season/list/`)
@@ -29,16 +36,31 @@ class FifaSzn extends React.Component {
 
     const seasonCards = seasonDocs.map((doc, key) => {
       return (
-        <FullScreenCard key={ key } name={ doc.name } id={ doc.seasonId }/>
+        <FullScreenCard
+          key={ doc.seasonId }
+          header={ doc.name }/>
       )
     });
 
     return (
       <div>
-        <Header name={ this.state.name } />
-        <div className="app-wrap">
-          { seasonCards }
-        </div>
+        <Header name={ this.state.name.toLowerCase() } />
+          <div className="app-wrap">
+            {
+              this.state.active === 'LANDING' ? (
+                <section>
+                  <FullScreenCard
+                    header='+ Start New Season'
+                    onClick={ () => this.updateView('NEWSZN') }
+                    />
+                  <h2> Current Seasons: </h2>
+                  { seasonCards }
+                </section>
+              ) : this.state.active === 'NEWSZN' ? (
+                <NewSzn />
+              ) : null
+            }
+          </div>
       </div>
     );
   }

@@ -1,14 +1,19 @@
-.fullScreenCard {
-  background-color: $white;
-  color: $accent-color;
+.full-screen-card {
+  background-color: $accent-color;
+  color: $white;
 
-  border: 2.5px solid $accent-color;
   margin-top: 25px;
   margin-bottom: 25px;
   padding: 50px;
 
+  h1 {
+    text-align: center;
+  }
+
   &:hover {
-    background-color: $accent-color;
+    background-color: lighten(
+      desaturate($accent-color, 20%)
+    , 20%);
     color: $white;
   }
 }
