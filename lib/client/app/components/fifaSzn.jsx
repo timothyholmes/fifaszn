@@ -7,6 +7,7 @@ import env from '../../../../config/env.js';
 import Header from './header.jsx';
 import FullScreenCard from './fullScreenCard.jsx';
 import NewSzn from './newSzn.jsx';
+import CurrentSzn from './currentSzn.jsx';
 
 class FifaSzn extends React.Component {
   constructor() {
@@ -52,7 +53,7 @@ class FifaSzn extends React.Component {
           header={ doc.name }
           onClick={ () => this.selectSeason(
             {
-              season: {},
+              season: doc,
               active: 'SOLOSZN'
             }
           )}
@@ -84,7 +85,9 @@ class FifaSzn extends React.Component {
                 </section>
               ) : this.state.active === 'NEWSZN' ? (
                 <NewSzn />
-              ) : this.state.active === 'SOLOSZN' ? null : null
+              ) : this.state.active === 'SOLOSZN' ? (
+                <CurrentSzn seasonId={ this.state.currentSeason.seasonId } />
+              ) : null
             }
           </div>
       </div>
