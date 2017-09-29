@@ -38,13 +38,17 @@ class FifaSzn extends React.Component {
       return (
         <FullScreenCard
           key={ doc.seasonId }
-          header={ doc.name }/>
+          header={ doc.name }
+          onClick={ () => this.updateView('SOLOSZN') }/>
       )
     });
 
     return (
       <div>
-        <Header name={ this.state.name.toLowerCase() } />
+        <Header
+          name={ this.state.name.toLowerCase() }
+          onClick={ () => this.updateView('LANDING') }
+        />
           <div className="app-wrap">
             {
               this.state.active === 'LANDING' ? (
