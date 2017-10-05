@@ -3,6 +3,8 @@ const Lab = require('lab');
 const should = require('should');
 const path = require('path');
 const sinon = require('sinon');
+const bluebird = require('bluebird');
+const mongodb = bluebird.promisifyAll(require('mongodb'));
 const server = require('../../../../lib/util/index');
 
 exports.lab = Lab.script();
@@ -15,6 +17,10 @@ describe('Utilities', () => {
   describe('Register method', () => {
     it('Should call wireRoutes with path and server', (done) => {
       const nextStub = sinon.stub();
+
+      mongodb.MongoClient.connectAsync = sinon.stub()
+        .returns(bluebird.resolve({ db: true }));
+
       const serverStub = {
         expose: sinon.stub()
       };

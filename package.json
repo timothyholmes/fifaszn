@@ -9,7 +9,7 @@
     "ui-watch": "PORT=3000 concurrently \"webpack -dw\" \"npm run ui-watch-sass\" \"npm run start\"",
     "ui-watch-sass": "nodemon -e scss -w lib/client/style/ -x 'npm run ui-build-sass'",
     "ui-build-sass": "node-sass --output-style nested lib/client/style/main.scss lib/client/public/main.css",
-    "test": "lab -t 90 -e development -L -v -m 5000 ./test",
+    "test": "TESTING=true lab -t 90 -e development -L -v -m 5000 ./test",
     "html": "lab -L -c -r html -e development -o coverage.html -m 5000 ./test && open coverage.html",
     "docs": "rm -rf ./docs && jsdoc -c ./config/jsdoc.js && open ./docs/index.html"
   },
