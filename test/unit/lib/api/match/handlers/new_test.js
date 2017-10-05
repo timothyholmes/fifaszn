@@ -67,6 +67,7 @@ describe('Match service', () => {
       newMatch.handler(requestStub, replyStub)
         .then(() => {
           should(findStub.firstCall.args[0]).deepEqual({
+            limit: 1,
             query: {
               seasonId: '12345'
             },
