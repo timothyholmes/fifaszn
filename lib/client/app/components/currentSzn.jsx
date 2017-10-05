@@ -11,7 +11,7 @@ class CurrentSzn extends React.Component {
     super(props);
 
     this.state = {
-      active: 'SCHEDULE',
+      active: 'LEADERBOARD',
       season: {}
     };
   }
@@ -40,19 +40,15 @@ class CurrentSzn extends React.Component {
         players.push(player);
       });
 
-      console.log('leaderboard', _.sortBy(players, 'ratio'));
-
       leaderboard = _.sortBy(players, 'ratio').map((player, key) => {
         return (
           <FullScreenCard
             key={ player.id }
             header={ player.name }
-            subtext={ player.ratio }
+            subtext={ `W/L: ${player.ratio}` }
           />
         )
       });
-
-      console.log('leaderboard', leaderboard);
     }
 
     return (
@@ -65,7 +61,7 @@ class CurrentSzn extends React.Component {
              this.state.active === 'SCHEDULE' ? (
                'byebye'
              ) : (
-               { leaderboard }
+               leaderboard
              )
            }
          </section>
