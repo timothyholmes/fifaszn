@@ -2,7 +2,7 @@ module.exports = {
   expectedSuccess: {
     players: [{
       id: '2',
-      day: 1,
+      day: 0,
       points: 0,
       team: 'Man U',
       name: 'Andrew',
