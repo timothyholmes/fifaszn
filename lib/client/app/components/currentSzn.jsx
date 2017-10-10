@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 import axios from 'axios';
 import env from '../../../../config/env.js';
 import FullScreenCard from './fullScreenCard.jsx';
+import SeasonSchedule from './seasonSchedule.jsx';
 import '../../public/main.css';
 
 class CurrentSzn extends React.Component {
@@ -59,7 +60,9 @@ class CurrentSzn extends React.Component {
          <section>
            {
              this.state.active === 'SCHEDULE' ? (
-               'byebye'
+               <SeasonSchedule
+                 season={ this.state.season }
+               />
              ) : (
                leaderboard
              )
