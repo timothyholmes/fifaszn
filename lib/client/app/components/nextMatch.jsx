@@ -24,8 +24,8 @@ class NextMatch extends React.Component {
     return (
       <section>
         <h1>Name: { this.state.player.name }</h1>
-        <h3>Team: {this.state.team}</h2>
-        <h3>Day: {this.state.day}</h2>
+        <h3>Team: { this.state.player.team }</h3>
+        <h3>Day: { this.state.player.day }</h3>
         <h2>Next Match: </h2>
         nextMatch
       </section>

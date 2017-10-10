@@ -84,7 +84,7 @@ describe('Season service', () => {
           should(codeStub.firstCall.args[0]).equal(200);
 
           done();
-        });
+        }).catch(done);
     });
     it('should return error when players are incorrect size', (done) => {
       const codeStub = sinon.stub();
