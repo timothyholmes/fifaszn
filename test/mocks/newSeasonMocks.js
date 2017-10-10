@@ -9,9 +9,9 @@ module.exports = {
       color: 'ff0000',
       cpu: true,
       schedule: [
-        { home: '2', away: '3' },
-        { home: '2', away: '4' },
-        { home: '2', away: '5' }
+        { id: '3', name: 'Matt' },
+        { id: '4', name: 'Tim' },
+        { id: '5', name: 'Tony' }
       ],
       history: []
     }, {
@@ -23,9 +23,9 @@ module.exports = {
       color: '00ff00',
       cpu: true,
       schedule: [
-        { home: '3', away: '2' },
-        { home: '3', away: '4' },
-        { home: '3', away: '5' }
+        { id: '2', name: 'Andrew' },
+        { id: '4', name: 'Tim' },
+        { id: '5', name: 'Tony' }
       ],
       history: []
     }, {
@@ -37,9 +37,9 @@ module.exports = {
       color: '0000ff',
       cpu: false,
       schedule: [
-        { home: '4', away: '2' },
-        { home: '4', away: '3' },
-        { home: '4', away: '5' }
+        { id: '2', name: 'Andrew' },
+        { id: '3', name: 'Matt' },
+        { id: '5', name: 'Tony' }
       ],
       history: []
     }, {
@@ -51,9 +51,9 @@ module.exports = {
       color: 'ffff00',
       cpu: false,
       schedule: [
-        { home: '5', away: '2' },
-        { home: '5', away: '3' },
-        { home: '5', away: '4' }
+        { id: '2', name: 'Andrew' },
+        { id: '3', name: 'Matt' },
+        { id: '4', name: 'Tim' }
       ],
       history: []
     }],
