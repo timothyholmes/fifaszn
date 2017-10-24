@@ -27,7 +27,7 @@ class NextMatch extends React.Component {
         <h3>Team: {this.state.player.team}</h3>
         <h3>Day: {this.state.player.day}</h3>
         <h3>Next Home Match: </h3>
-        { nextMatch }
+        VS. { nextMatch.name }
       </section>
     );
   }
